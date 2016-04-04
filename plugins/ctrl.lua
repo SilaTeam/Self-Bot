@@ -39,7 +39,7 @@ local function disable_channel(receiver, to_id)
 	_config.disabled_channels[receiver] = true
 
 	save_config()
-	return 'Bot was off ;-/'
+	return 'Bot was off :/'
 end
 
 local function pre_process(msg)
@@ -81,7 +81,7 @@ local function run(msg, matches)
  if string.match then
      local command = 'git pull'
    text = run_bash(command)
-   local text = text..'Updates were applied GitHub\n@BeatBot_Team'
+   local text = text..'nil'
     return text
   end
 end
