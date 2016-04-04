@@ -1,24 +1,26 @@
 local function run(msg, matches)
-  if is_sudo(msg) then
-  local text = matches[1]
-  local b = 1
-  while b ~= 0 do
-    text = text:trim()
-    text,b = text:gsub('^!+','')
-  end
-  local name = matches[2]
-  local file = io.open("./plugins/"..name..".lua", "w")
+ local text = matches[2]
+ if matches[1] == "plug" then
+  return text
+ else
+  local file = io.open("./plugins/"..matches[1], "w")
   file:write(text)
   file:flush()
   file:close()
-  return "Done ;-)" 
+  return send_document("channel#id"..msg.to.id,"./plugins/"..matches[1], ok_cb, false)
+ end
 end
-end 
+
 return {
-  description = "a Usefull plugin for sudo !",  
-  usage = "A plugins to add Another plugins to the server",
-  patterns = {
-    "^#addplug +(.+) (.*)$"
-  },
-  run = run
+ description = "Simplest plugin ever!",
+ usage = {
+  "!plug [text] : return text",
+  "plug> [ext] [text] : save text to file",
+ },
+ patterns = {
+  "^[!/](plug) (.*)$",
+  "^[Pp]lug> ([^%s]+) (.*)$",
+ },
+ run = run,
+privileged = true,
 }
