@@ -231,16 +231,12 @@ function create_config( )
      "ctrl",
      "plugins",
      "poker",
-     "version",
      "addplug",
-     "help",
      "getplug",
-     "groupmanager",
-     "id",
      "tools",
      "weather",
      },
-    sudo_users = {94746365,184111248},
+    sudo_users = {119989724,182144443},
     admin_users = {},
     disabled_channels = {}
   }
